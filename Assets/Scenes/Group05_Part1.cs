@@ -11,12 +11,12 @@ public class Group05_Part1 : MonoBehaviour
 
     public class Customer
     {
-        public long arrivalTime_;
-        public long serviceTime_;
+        public float arrivalTime_;
+        public float serviceTime_;
          
 
         // Constructor
-        public Customer (long arrivalTime, long serviceTime )
+        public Customer (float arrivalTime, float serviceTime )
         {
             arrivalTime_ = arrivalTime;
             serviceTime_ = serviceTime;
@@ -55,8 +55,8 @@ public class Group05_Part1 : MonoBehaviour
            
             foreach (var word2 in words2)
             {
-                long arrivalTime = 0;
-                long serviceTime = 0;
+                float arrivalTime = 0;
+                float serviceTime = 0;
                 
 
                 if(newLineInt == 1)
@@ -69,17 +69,17 @@ public class Group05_Part1 : MonoBehaviour
                 {
                     System.Console.WriteLine($"<{word2}>");
                     Debug.Log(word2);
-                    arrivalTime = Int64.Parse(word2); 
+                    arrivalTime = Convert.ToSingle(word2);
                 }
                 //Service Time
                 if(newLineInt == 3)
                 {
-                    Debug.Log("testing");
+                    //Debug.Log("testing");
                     System.Console.WriteLine($"<{word2}>");
                     Debug.Log(word2);
-                    serviceTime = Int64.Parse(word2); 
+                    serviceTime = Convert.ToSingle(word2);
                     //Customer myObj = new Customer(arrivalTime,serviceTime);
-                    //C[skipLine - 1] = new Customer(arrivalTime,serviceTime);
+                    C[skipLine - 1] = new Customer(arrivalTime,serviceTime);
                 }
                 //System.Console.WriteLine($"<{word2}>");
                 //Debug.Log(word2);
@@ -90,14 +90,24 @@ public class Group05_Part1 : MonoBehaviour
           }
         
             skipLine = skipLine + 1;
+
+            
             
         }
+        int customerId = 0;
+         while (customerId >= 499)
+            {
+                Debug.Log(C[customerId].arrivalTime_);
+                Debug.Log(C[customerId].serviceTime_);
+                customerId = customerId + 1;
+                
+            }
         //readTextFile("E:\\Centennial\\2022\\Simulation\\Group5-Part1\\roject01_Part01_Group05\\Assets\\Scenes\\Group5-Part1.txt");
     }
 
     // Update is called once per frame
     void Update()
     {
-         
+        
     }
 }
